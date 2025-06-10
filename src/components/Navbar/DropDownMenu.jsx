@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaUniversity,} from 'react-icons/fa';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 import { AboutData } from './Data';
+import { Link } from 'react-router-dom';
 
 export default function DropDownMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,14 +31,14 @@ export default function DropDownMenu() {
         {isOpen && (
           <div className="absolute left-0 mt-0 w-56 origin-top-left bg-gray-100 border border-gray-200 rounded-md shadow-lg z-50">
             {AboutData.map(({ name, link, icon }) => (
-              <a
+              <Link
                 key={name}
-                href={link}
+                to={link}
                 className="flex items-center px-4 py-3 text-sm rounded-md text-gray-700 hover:bg-blue-500 hover:text-white"
               >
                 {icon}
                 {name}
-              </a>
+              </Link>
             ))}
           </div>
         )}

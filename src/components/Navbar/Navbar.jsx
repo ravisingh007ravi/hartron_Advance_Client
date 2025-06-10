@@ -1,0 +1,227 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { FaFacebook, FaInstagram, FaYoutube, FaUniversity, FaBookOpen, FaMapMarkedAlt, FaBlog, FaUserGraduate, FaPhoneAlt, FaHome } from 'react-icons/fa';
+import { FaBarsStaggered } from "react-icons/fa6";
+import { MdClose } from "react-icons/md";
+import DropdownMenuProfile from './DropdownMenuProfile';
+import DropDownMenu from './DropDownMenu';
+import { AboutData } from './Data'
+
+export default function Navbar() {
+  const [bar, setBar] = useState(false);
+  const [login, setLogIn] = useState(false);
+
+
+  const MENU_DATA = [
+    { id: 1, label: "Home", link: '/', current: true, icon: <FaHome className="inline mr-1" /> },
+    { id: 2, label: DropDownMenu(AboutData), type: 'dropdown', },
+    { id: 3, label: "Courses", link: '/courses', icon: <FaBookOpen className="inline mr-1" /> },
+    { id: 4, label: "Branches", link: '/branches', icon: <FaMapMarkedAlt className="inline mr-1" /> },
+    { id: 5, label: "Blogs", link: '/blogs', icon: <FaBlog className="inline mr-1" /> },
+    // { id: 6, label: "Student Zone", link: '/student-zone', icon: <FaUserGraduate className="inline mr-1" /> },
+    { id: 7, label: "Contact", link: '/contact', icon: <FaPhoneAlt className="inline mr-1" /> },
+  ];
+
+  const socialLinks = [
+    { icon: <FaFacebook className='text-[#1877F2] hover:text-[#145DBF]' />, url: "#" },
+    { icon: <FaInstagram className='text-[#E1306C] hover:text-[#C13584]' />, url: "#" },
+    { icon: <FaYoutube className='text-[#FF0000] hover:text-[#CC0000]' />, url: "#" }
+  ];
+
+  return (
+    <header className="w-full sticky top-0 z-50">
+      <motion.div
+        initial={{ y: -20 }}
+        animate={{ y: 0 }}
+        className="bg-gradient-to-r from-indigo-800 to-blue-600 text-white text-sm text-center py-2 px-4"
+      >
+        <div className="container mx-auto py-2 flex justify-center items-center">
+          <span className="mr-2">🎓</span>
+          <p>
+            Learning to code? Check out our{" "}
+            <a href="#" className="text-yellow-300 underline font-medium hover:text-yellow-200 transition">
+              Coding Fundamentals
+            </a>{" "}
+            course for beginners!
+          </p>
+        </div>
+      </motion.div>
+
+      <nav className="bg-white shadow-md">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <Link to='/'>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
+                <img
+                  src="https://res.cloudinary.com/dnpn8ljki/image/upload/v1749452665/logo_1_exrbma.png"
+                  alt="Academy Logo"
+                  className="h-10"
+                />
+                {/* <span className="ml-2 font-bold text-xl bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent">
+                Hartron
+              </span> */}
+              </motion.div>
+            </Link>
+            <div className="hidden lg:flex items-center space-x-1">
+              {MENU_DATA.map((item) => (
+                <motion.div key={item.id} whileHover={{ scale: 1.05 }} className="relative group">
+                  {item.dropdown ? (
+                    <>
+                      <button className="px-3 py-2 rounded-md text-sm font-medium flex items-center text-gray-700 hover:text-blue-600 focus:outline-none">
+                        {item.icon}
+                        {item.label}
+                      </button>
+                      <div className="absolute left-0 mt-2 w-56 origin-top-left bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 z-50">
+                        <div className="py-1">
+                          {item.dropdown.map(({ link, name, icon }, index) => (
+                            <Link
+                              key={index}
+                              to={link}
+                              className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                            >
+                              {icon}
+                              <span className="ml-1">{name}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <Link
+                      to={item.link}
+                      className={`px-3 py-2 rounded-md text-sm font-medium flex items-center ${item.current ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'}`}
+                    >
+                      {item.icon && <span className="mr-1">{item.icon}</span>}
+                      {item.label}
+                    </Link>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <div className="flex space-x-3">
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.url}
+                    whileHover={{ scale: 1.2, color: "#3b82f6" }}
+                    className="text-gray-600 hover:text-blue-500 text-xl"
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </div>
+
+              <div>
+                {login ? (
+                  <motion.div whileHover={{ scale: 1.05 }}>
+                    <DropdownMenuProfile />
+                  </motion.div>
+                ) : (
+                  <div className='hidden lg:flex items-center gap-5'>
+                    <div className="flex space-x-2">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-4 py-1.5 text-sm font-medium rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm hover:from-blue-700 hover:to-indigo-700 transition"
+                      >
+                        Sign up
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-4 py-1.5 text-sm font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition"
+                      >
+                        Log in
+                      </motion.button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+
+              <div className='md:hidden'>
+                {bar ? <MdClose size={25} onClick={() => setBar(!bar)} /> : <FaBarsStaggered size={25} onClick={() => setBar(!bar)} />}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+      <motion.div
+        initial={false}
+        animate={bar ? "open" : "closed"}
+        variants={{
+          open: {
+            opacity: 1,
+            height: "auto",
+            transition: {
+              staggerChildren: 0.1,
+              when: "beforeChildren"
+            }
+          },
+          closed: {
+            opacity: 0,
+            height: 0,
+            transition: {
+              staggerChildren: 0.05,
+              staggerDirection: -1,
+              when: "afterChildren"
+            }
+          }
+        }}
+        className="md:hidden w-full bg-white overflow-hidden border-t border-gray-200 shadow-inner"
+      >
+        <ul className="flex flex-col text-center space-y-2 p-4">
+          {MENU_DATA.map(({ label, link, icon, type }, key) => (
+            <motion.li
+              key={key}
+              variants={{
+                open: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+                closed: { opacity: 0, y: -20, transition: { duration: 0.2 } }
+              }}
+              className="relative"
+            >
+              <Link
+                to={link}
+                className="flex items-center justify-center gap-2 rounded-md text-lg font-medium px-3 py-2 text-gray-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
+              // onClick={() => setBar(false)}
+
+
+              >
+                <span className="text-xl text-blue-500">{icon}</span>
+                {label}
+              </Link>
+
+
+            </motion.li>
+          ))}
+
+          <div className='lg:hidden flex justify-center mt-4'>
+            <div className='flex items-center gap-4'>
+              <div className="flex space-x-3">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-5 py-2 text-sm font-medium rounded-md bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition"
+                >
+                  Sign up
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-5 py-2 text-sm font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition"
+                >
+                  Log in
+                </motion.button>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </motion.div>
+    </header>
+  );
+}

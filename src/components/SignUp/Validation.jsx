@@ -9,3 +9,7 @@ export const validationSchema = Yup.object().shape({
       .required('Confirm your password'),
     hcaptcha: Yup.string().required('Please complete the captcha'),
   });
+  
+export const validationSchemaEMail = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Email is required'),
+  });

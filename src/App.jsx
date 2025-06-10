@@ -1,10 +1,12 @@
 import React from 'react';
-import { Navbar, Home, Signup, LogIn, ViewCourse, CenterHead, Faculty } from './AllComponents.js';
+import { Navbar, Home, Signup, LogIn, ViewCourse, CenterHead, Faculty, ConfirmationEMail,ForgatePassword
+
+ } from './AllComponents.js';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 function AppContent() {
   const location = useLocation();
-  const hideNavbarRoutes = ['/sign-up', '/log-in'];
+  const hideNavbarRoutes = ['/sign-up', '/log-in','/confirmation-email','/forgate-password'];
 
   const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
 
@@ -18,6 +20,8 @@ function AppContent() {
         <Route path='/courses/:courseId' element={<ViewCourse />} />
         <Route path='/center_head' element={<CenterHead />} />
         <Route path='/faculty' element={<Faculty />} />
+        <Route path='/confirmation-email' element={<ConfirmationEMail />} />
+        <Route path='/forgate-password' element={<ForgatePassword />} />
       </Routes>
     </>
   );

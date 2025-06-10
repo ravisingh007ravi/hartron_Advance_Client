@@ -143,7 +143,9 @@ export default function LogIn() {
             <p>
               Forgot password?{' '}
               <span className="text-blue-600 font-medium cursor-pointer hover:underline">
+                <Link to='/forgate-password'>
                 Recover
+                </Link>
               </span>
             </p>
           </div>

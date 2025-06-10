@@ -1,32 +1,35 @@
+import React from 'react';
 import { useFormik } from 'formik';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { motion } from 'framer-motion';
-import {validationSchema} from './Validation'
 import { Link } from 'react-router-dom';
-export default function Signup() {
-  const INPUTDATA = [
-    { name: 'email', label: 'Email', placeholder: 'Enter your email', type: 'email' },
-    { name: 'password', label: 'Password', placeholder: 'Choose a password', type: 'password' },
-    { name: 'confirmPassword', label: 'Confirm Password', placeholder: 'Repeat your password', type: 'password' },
-  ];
+import { validationSchemaEMail } from './validation';
 
-  
+export default function ForgotPassword() {  // Fixed component name from ForgatePassword to ForgotPassword
 
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
-      confirmPassword: '',
-      hcaptcha: '',
+      hcaptcha: ''
     },
-    validationSchema,
+    validationSchema: validationSchemaEMail,
     onSubmit: values => {
       console.log('Form submitted:', values);
     },
   });
 
-  const handleHCaptchaVerify = token => formik.setFieldValue('hcaptcha', token);
-  const handleHCaptchaExpire = () => formik.setFieldValue('hcaptcha', '');
+  const handleHCaptchaVerify = (token) => {
+    formik.setFieldValue('hcaptcha', token);
+    formik.setFieldTouched('hcaptcha', true);
+  };
+
+  const handleHCaptchaExpire = () => {
+    formik.setFieldValue('hcaptcha', '');
+  };
+
+  const INPUTDATA = [
+    { name: 'email', label: 'Email', placeholder: 'Enter your email', type: 'email' },
+  ];
 
   return (
     <div className="min-h-screen flex">
@@ -38,12 +41,20 @@ export default function Signup() {
         className="w-full lg:w-1/2 p-10 flex flex-col justify-center"
       >
         <div className="flex justify-center mb-8 select-none">
-            <Link to='/'>         
-             <img src="https://res.cloudinary.com/dnpn8ljki/image/upload/v1749452665/logo_1_exrbma.png" alt="logo"
-            className="h-20"
-          />
+          <Link to='/'>         
+            <img src="https://res.cloudinary.com/dnpn8ljki/image/upload/v1749452665/logo_1_exrbma.png" alt="logo"
+              className="h-20"
+            />
           </Link>
+        </div>
 
+        <div className="mb-6">  {/* Added container for text content */}
+          <h1 className="text-2xl font-bold mb-2">Forgot your password?</h1>
+          <p className="text-gray-600">
+            If you've forgotten your password, use the form below to request a link to change it. 
+            Many people who think they've forgotten their password originally signed in using GitHub 
+            so you may like to try that too.
+          </p>
         </div>
 
         <form onSubmit={formik.handleSubmit} className="space-y-6">
@@ -99,18 +110,26 @@ export default function Signup() {
             disabled={formik.isSubmitting}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all duration-200"
           >
-            Sign Up
+            Send instructions
           </motion.button>
 
           <div className="text-sm text-center text-gray-700 space-y-1">
             <p>
-              Already have an account?{' '}
+              Already got an account?{' '}
               <span className="text-blue-600 font-medium cursor-pointer hover:underline">
                 <Link to='/log-in'>Log in</Link></span>
             </p>
             <p>
-              Didn’t receive your confirmation email?{' '}
-              <span className="text-blue-600 font-medium cursor-pointer hover:underline"><Link to='/confirmation-email'>Resend it</Link></span>
+              Don't have an account yet?{' '}
+              <span className="text-blue-600 font-medium cursor-pointer hover:underline">
+                <Link to='/sign-up'>Sign up for free.</Link>
+              </span>
+            </p>
+            <p>
+              Didn't receive your confirmation email?{' '}
+              <span className="text-blue-600 font-medium cursor-pointer hover:underline">
+                <Link to='/confirmation-email'>Resend it</Link>
+              </span>
             </p>
           </div>
         </form>
@@ -128,5 +147,5 @@ export default function Signup() {
         />
       </div>
     </div>
-  );
+  )
 }

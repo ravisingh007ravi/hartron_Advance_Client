@@ -5,3 +5,5 @@ export {default as LogIn} from './components/LogIn/LogIn.jsx';
 export {default as ViewCourse} from './components/ViewCourse.jsx';
 export {default as CenterHead} from './components/CenterHead.jsx';
 export {default as Faculty} from './components/Faculty.jsx';
+export {default as ConfirmationEMail} from './components/SignUp/ConfirmationEMail.jsx';
+export {default as ForgatePassword} from './components/LogIn/ForgatePassword.jsx';

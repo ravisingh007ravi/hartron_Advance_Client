@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const courses = [
   {
-    title: "Hartron Skill Center",
+    title: "Hartron Skill centre",
     description: "This course focuses on practical IT and vocational training with industry-relevant skills to prepare students for immediate employment opportunities.",
     image: "https://hartronkaithal.in/wp-content/uploads/2024/12/I-27.png",
     highlights: [
@@ -14,7 +14,7 @@ const courses = [
     ]
   },
   {
-    title: "Hartron Advance Skill Center",
+    title: "Hartron Advance Skill centre",
     description: "Advanced IT training with certifications in cutting-edge technologies like AI, Web Development, and Cloud computing for career advancement.",
     image: "https://hartronkaithal.in/wp-content/uploads/2024/12/I-1.png",
     highlights: [

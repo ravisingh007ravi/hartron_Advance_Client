@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import BGImg from '../../assets/BannerBackgroundImage.png';
+import { Link } from 'react-router-dom';
 
 export default function Banner() {
   const containerVariants = {
@@ -84,13 +85,15 @@ export default function Banner() {
               variants={itemVariants}
               className="mt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
-              <motion.button 
+              <Link to='/sign-up'>              <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition shadow-lg"
               >
                 Sign up for free
               </motion.button>
+              </Link>
+
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

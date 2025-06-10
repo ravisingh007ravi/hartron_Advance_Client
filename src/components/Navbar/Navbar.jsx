@@ -19,7 +19,7 @@ import AllCourseDropDown from './AllCourseDropDown';
 
 export default function Navbar() {
   const [bar, setBar] = useState(false);
-  const [login, setLogIn] = useState(true);
+  const [login, setLogIn] = useState(false);
 
   const MENU_DATA = [
     { id: 1, label: 'Home', link: '/', icon: <FaHome className="inline mr-1" /> },

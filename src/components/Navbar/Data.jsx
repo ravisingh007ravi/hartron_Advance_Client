@@ -8,3 +8,5 @@ export  const AboutData = [
     { name: 'Admin Panel', link: '/admin_panel', icon: <FaUserShield className="text-red-500 mr-2" />, },
     { name: 'Faculty', link: '/faculty', icon: <FaUsers className="text-purple-500 mr-2" />,},
   ];
+
+

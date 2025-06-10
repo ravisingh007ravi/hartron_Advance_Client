@@ -15,6 +15,7 @@ import { FaBarsStaggered } from 'react-icons/fa6';
 import { MdClose } from 'react-icons/md';
 import DropdownMenuProfile from './DropdownMenuProfile';
 import DropDownMenu from './DropDownMenu';
+import AllCourseDropDown from './AllCourseDropDown';
 
 export default function Navbar() {
   const [bar, setBar] = useState(false);
@@ -23,10 +24,10 @@ export default function Navbar() {
   const MENU_DATA = [
     { id: 1, label: 'Home', link: '/', icon: <FaHome className="inline mr-1" /> },
     { id: 2, type: 'dropdown' },
-    { id: 3, label: 'Courses', link: '/courses', icon: <FaBookOpen className="inline mr-1" /> },
+    { id: 3, type: 'AllCourseDropDown' },
     { id: 4, label: 'Branches', link: '/branches', icon: <FaMapMarkedAlt className="inline mr-1" /> },
-    { id: 5, label: 'Blogs', link: '/blogs', icon: <FaBlog className="inline mr-1" /> },
-    { id: 7, label: 'Contact', link: '/contact', icon: <FaPhoneAlt className="inline mr-1" /> },
+    { id: 5, label: 'Examination', link: '/examination', icon: <FaBlog className="inline mr-1" /> },
+    { id: 6, label: 'Contact Us', link: '/contact', icon: <FaPhoneAlt className="inline mr-1" /> },
   ];
 
   const socialLinks = [
@@ -37,7 +38,6 @@ export default function Navbar() {
 
   return (
     <header className="w-full sticky top-0 z-50">
-      {/* Top Banner */}
       <motion.div
         initial={{ y: -20 }}
         animate={{ y: 0 }}
@@ -47,22 +47,16 @@ export default function Navbar() {
           <span className="mr-2">🎓</span>
           <p>
             Learning to code? Check out our{' '}
-            <a
-              href="#"
-              className="text-yellow-300 underline font-medium hover:text-yellow-200 transition"
-            >
+            <a href="#" className="text-yellow-300 underline font-medium hover:text-yellow-200 transition">
               Coding Fundamentals
-            </a>{' '}
-            course for beginners!
+            </a>{' '}course for beginners!
           </p>
         </div>
       </motion.div>
 
-      {/* Navbar */}
       <nav className="bg-white shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
             <Link to="/">
               <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
                 <img
@@ -73,12 +67,13 @@ export default function Navbar() {
               </motion.div>
             </Link>
 
-            {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-1">
               {MENU_DATA.map((item) => (
                 <motion.div key={item.id} whileHover={{ scale: 1.05 }} className="relative group">
                   {item.type === 'dropdown' ? (
                     <DropDownMenu />
+                  ) : item.type === 'AllCourseDropDown' ? (
+                    <AllCourseDropDown />
                   ) : (
                     <Link
                       to={item.link}
@@ -94,7 +89,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Social + Auth + Hamburger */}
             <div className="flex items-center space-x-4">
               <div className="flex space-x-3">
                 {socialLinks.map((social, index) => (
@@ -139,47 +133,29 @@ export default function Navbar() {
               </div>
 
               <div className="md:hidden">
-                {bar ? (
-                  <MdClose size={25} onClick={() => setBar(!bar)} />
-                ) : (
-                  <FaBarsStaggered size={25} onClick={() => setBar(!bar)} />
-                )}
+                {bar ? <MdClose size={25} onClick={() => setBar(!bar)} /> : <FaBarsStaggered size={25} onClick={() => setBar(!bar)} />}
               </div>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Dropdown */}
       <motion.div
         initial={false}
         animate={bar ? 'open' : 'closed'}
         variants={{
-          open: {
-            opacity: 1,
-            height: 'auto',
-            transition: { staggerChildren: 0.1, when: 'beforeChildren' },
-          },
-          closed: {
-            opacity: 0,
-            height: 0,
-            transition: { staggerChildren: 0.05, staggerDirection: -1, when: 'afterChildren' },
-          },
+          open: { opacity: 1, height: 'auto', transition: { staggerChildren: 0.1, when: 'beforeChildren' } },
+          closed: { opacity: 0, height: 0, transition: { staggerChildren: 0.05, staggerDirection: -1, when: 'afterChildren' } },
         }}
         className="md:hidden w-full bg-white overflow-hidden border-t border-gray-200 shadow-inner"
       >
         <ul className="flex flex-col text-center space-y-2 p-4">
           {MENU_DATA.map((item, key) => (
-            <motion.li
-              key={key}
-              variants={{
-                open: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-                closed: { opacity: 0, y: -20, transition: { duration: 0.2 } },
-              }}
-              className="relative"
-            >
+            <motion.li key={key} variants={{ open: { opacity: 1, y: 0 }, closed: { opacity: 0, y: -20 } }} className="relative">
               {item.type === 'dropdown' ? (
                 <DropDownMenu />
+              ) : item.type === 'AllCourseDropDown' ? (
+                <AllCourseDropDown />
               ) : (
                 <Link
                   to={item.link}
@@ -192,7 +168,6 @@ export default function Navbar() {
             </motion.li>
           ))}
 
-          {/* Auth buttons for mobile */}
           <div className="lg:hidden flex justify-center mt-4">
             <div className="flex items-center gap-4">
               <Link to="/sign-up">

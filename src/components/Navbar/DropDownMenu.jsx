@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { FaUniversity,} from 'react-icons/fa';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
+import { AboutData } from './Data';
 
-
-export default function DropDownMenu(AboutData) {
+export default function DropDownMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
  

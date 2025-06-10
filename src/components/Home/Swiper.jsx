@@ -15,14 +15,15 @@ export default function ExpoSwiper() {
   const nextRef = useRef(null);
 
   const slides = [
-    { title: 'Captain America: Brave New World', img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1748723343/captain_america_brave_new_world_ver2_qgl4de.jpg' },
-    { title: 'Chhaava', img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1748723343/chhaava_afninc.jpg' },
-    { title: 'Companion', img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1748723343/companion_qn8fak.jpg' },
-    { title: 'Sinners', img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1748723343/sinners_ver4_jp4v3l.jpg' },
-    { title: 'Avatar: The Way of Water', img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1748724801/avatar_the_way_of_water_ver2_sepwem.jpg' },
-    { title: 'Black Panther: Wakanda Forever', img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1748724778/black_panther_wakanda_forever_ver2_zpnpvj.jpg' },
-    { title: 'Top Gun: Maverick', img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1748724768/top_gun_maverick_ver3_yyc67d.jpg' },
-    { title: 'Jurassic World Dominion', img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1748724758/jurassic_world_rebirth_ver2_doxjuz.jpg' },
+    { title: 'Hartron Advance Skill Center', img: 'https://hartronkaithal.in/wp-content/uploads/2024/12/I-15.png' },
+    { title: 'Hartron Advance Skill Center', img: 'https://hartronkaithal.in/wp-content/uploads/2024/12/I-29.png' },
+    { title: 'Hartron Advance Skill Center', img: 'https://hartronkaithal.in/wp-content/uploads/2024/12/I-18.png' },
+    { title: 'Hartron Advance Skill Center', img: 'https://hartronkaithal.in/wp-content/uploads/2024/12/I-6.png' },
+    { title: 'Hartron Advance Skill Center', img: 'https://hartronkaithal.in/wp-content/uploads/2024/12/I-3.png' },
+    { title: 'Hartron Advance Skill Center', img: 'https://hartronkaithal.in/wp-content/uploads/2024/12/I-17.png' },
+    { title: 'Hartron Advance Skill Center', img: 'https://hartronkaithal.in/wp-content/uploads/2024/12/I-29.png' },
+    { title: 'Hartron Advance Skill Center', img: 'https://hartronkaithal.in/wp-content/uploads/2024/12/I-25.png' },
+    { title: 'Hartron Advance Skill Center', img: 'https://hartronkaithal.in/wp-content/uploads/2024/12/I-22.png' },
   ];
 
   useEffect(() => {
@@ -40,8 +41,8 @@ export default function ExpoSwiper() {
   };
 
   return (
-    <div className="relative max-w-7xl mx-auto py-10 px-4">
-      {/* Navigation Arrows */}
+    <div className="relative py-10 md:px-4 px-0 ">
+
       <button
         ref={prevRef}
         className={`expo-arrow left-2 ${isBeginning ? 'opacity-30 cursor-default' : 'hover:bg-indigo-100'}`}
@@ -96,11 +97,11 @@ export default function ExpoSwiper() {
         }}
         onSlideChange={handleSlideChange}
         onInit={handleSlideChange}
-        className="expo-wrapper"
+        className="w-full md:h-[550px] "
       >
         {slides.map(({ title, img }) => (
           <SwiperSlide key={title} className="expo-slide">
-            <div className="relative h-full w-full">
+            <div className="relative md:h-full w-full">
               <img
                 data-swiper-parallax="-15%"
                 src={img}

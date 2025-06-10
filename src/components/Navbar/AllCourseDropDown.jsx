@@ -70,7 +70,7 @@ export default function AllCourseDropDown() {
                   <div className="absolute left-full top-0 mt-0 w-72 bg-gray-100 border border-gray-300 rounded-md shadow-lg z-50">
                     {course.type.map((sub) => (
                       <Link
-                        to={sub.link}
+                        to={`/courses${sub.link}`}
                         key={sub.name}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white flex items-center"
                       >

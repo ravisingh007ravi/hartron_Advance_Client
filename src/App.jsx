@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Home, Signup, LogIn } from './AllComponents.js';
+import { Navbar, Home, Signup, LogIn, ViewCourse, CenterHead, Faculty } from './AllComponents.js';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 function AppContent() {
@@ -15,6 +15,9 @@ function AppContent() {
         <Route path='/' element={<Home />} />
         <Route path='/sign-up' element={<Signup />} />
         <Route path='/log-in' element={<LogIn />} />
+        <Route path='/courses/:courseId' element={<ViewCourse />} />
+        <Route path='/center_head' element={<CenterHead />} />
+        <Route path='/faculty' element={<Faculty />} />
       </Routes>
     </>
   );

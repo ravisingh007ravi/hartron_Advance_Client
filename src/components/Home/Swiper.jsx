@@ -6,7 +6,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-creative';
-import './Swiper.css';
 
 export default function ExpoSwiper() {
   const [isBeginning, setIsBeginning] = useState(true);

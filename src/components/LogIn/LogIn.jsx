@@ -1,17 +1,16 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import ReCAPTCHA from 'react-google-recaptcha'; // ✅ new import
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import {validationSchema} from './validation'
-export default function LogIn() {
- 
+import { validationSchema } from './validation';
 
+export default function LogIn() {
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
-      hcaptcha: '',
+      recaptcha: '', // ✅ updated from hcaptcha
     },
     validationSchema,
     onSubmit: values => {
@@ -20,8 +19,7 @@ export default function LogIn() {
     },
   });
 
-  const handleHCaptchaVerify = token => formik.setFieldValue('hcaptcha', token);
-  const handleHCaptchaExpire = () => formik.setFieldValue('hcaptcha', '');
+  const handleRecaptchaChange = token => formik.setFieldValue('recaptcha', token);
 
   return (
     <div className="min-h-screen flex">
@@ -105,16 +103,15 @@ export default function LogIn() {
             )}
           </motion.div>
 
-          {/* HCaptcha */}
+          {/* Google reCAPTCHA */}
           <div>
             <label className="text-sm font-semibold mb-2 block">Confirm you're not a robot</label>
-            <HCaptcha
-              sitekey="1d122fe2-7f0e-422a-9a60-212c5100aaa"
-              onVerify={handleHCaptchaVerify}
-              onExpire={handleHCaptchaExpire}
+            <ReCAPTCHA
+              sitekey="YOUR_RECAPTCHA_SITE_KEY" // ⛔ Replace with your actual site key
+              onChange={handleRecaptchaChange}
             />
-            {formik.touched.hcaptcha && formik.errors.hcaptcha && (
-              <span className="text-sm text-red-500 mt-1 block">{formik.errors.hcaptcha}</span>
+            {formik.touched.recaptcha && formik.errors.recaptcha && (
+              <span className="text-sm text-red-500 mt-1 block">{formik.errors.recaptcha}</span>
             )}
           </div>
 
@@ -143,9 +140,7 @@ export default function LogIn() {
             <p>
               Forgot password?{' '}
               <span className="text-blue-600 font-medium cursor-pointer hover:underline">
-                <Link to='/forgate-password'>
-                Recover
-                </Link>
+                <Link to='/forgate-password'>Recover</Link>
               </span>
             </p>
           </div>

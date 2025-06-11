@@ -1,8 +1,9 @@
 import { useFormik } from 'formik';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { motion } from 'framer-motion';
-import {validationSchema} from './Validation'
+import { validationSchema } from './Validation';
 import { Link } from 'react-router-dom';
+
 export default function Signup() {
   const INPUTDATA = [
     { name: 'email', label: 'Email', placeholder: 'Enter your email', type: 'email' },
@@ -10,14 +11,12 @@ export default function Signup() {
     { name: 'confirmPassword', label: 'Confirm Password', placeholder: 'Repeat your password', type: 'password' },
   ];
 
-  
-
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
       confirmPassword: '',
-      hcaptcha: '',
+      recaptcha: '', // renamed from hcaptcha
     },
     validationSchema,
     onSubmit: values => {
@@ -25,8 +24,9 @@ export default function Signup() {
     },
   });
 
-  const handleHCaptchaVerify = token => formik.setFieldValue('hcaptcha', token);
-  const handleHCaptchaExpire = () => formik.setFieldValue('hcaptcha', '');
+  const handleRecaptchaChange = value => {
+    formik.setFieldValue('recaptcha', value);
+  };
 
   return (
     <div className="min-h-screen flex">
@@ -38,12 +38,13 @@ export default function Signup() {
         className="w-full lg:w-1/2 p-10 flex flex-col justify-center"
       >
         <div className="flex justify-center mb-8 select-none">
-            <Link to='/'>         
-             <img src="https://res.cloudinary.com/dnpn8ljki/image/upload/v1749452665/logo_1_exrbma.png" alt="logo"
-            className="h-20"
-          />
+          <Link to='/'>
+            <img
+              src="https://res.cloudinary.com/dnpn8ljki/image/upload/v1749452665/logo_1_exrbma.png"
+              alt="logo"
+              className="h-20"
+            />
           </Link>
-
         </div>
 
         <form onSubmit={formik.handleSubmit} className="space-y-6">
@@ -82,13 +83,12 @@ export default function Signup() {
 
           <div>
             <label className="text-sm font-semibold mb-2 block">Confirm you're not a robot</label>
-            <HCaptcha
-              sitekey="1d122fe2-7f0e-422a-9a60-212c5100aaa"
-              onVerify={handleHCaptchaVerify}
-              onExpire={handleHCaptchaExpire}
+            <ReCAPTCHA
+              sitekey="YOUR_GOOGLE_RECAPTCHA_SITE_KEY"
+              onChange={handleRecaptchaChange}
             />
-            {formik.touched.hcaptcha && formik.errors.hcaptcha && (
-              <span className="text-sm text-red-500 mt-1 block">{formik.errors.hcaptcha}</span>
+            {formik.touched.recaptcha && formik.errors.recaptcha && (
+              <span className="text-sm text-red-500 mt-1 block">{formik.errors.recaptcha}</span>
             )}
           </div>
 
@@ -106,11 +106,14 @@ export default function Signup() {
             <p>
               Already have an account?{' '}
               <span className="text-blue-600 font-medium cursor-pointer hover:underline">
-                <Link to='/log-in'>Log in</Link></span>
+                <Link to='/log-in'>Log in</Link>
+              </span>
             </p>
             <p>
               Didn’t receive your confirmation email?{' '}
-              <span className="text-blue-600 font-medium cursor-pointer hover:underline"><Link to='/confirmation-email'>Resend it</Link></span>
+              <span className="text-blue-600 font-medium cursor-pointer hover:underline">
+                <Link to='/confirmation-email'>Resend it</Link>
+              </span>
             </p>
           </div>
         </form>

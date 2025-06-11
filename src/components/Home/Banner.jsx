@@ -41,13 +41,13 @@ export default function Banner() {
 
   return (
     <div className="relative w-full overflow-hidden">
-      <motion.div 
+      <motion.div
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="w-full md:h-[450px] h-[750px]"
       >
-        <img className="w-full h-full object-cover object-center" src={BGImg} alt="bannerBG"/>
+        <img className="w-full h-full object-cover object-center" src={BGImg} alt="bannerBG" />
       </motion.div>
 
       <div className="absolute inset-0 flex items-center justify-center bg-black/10 ">
@@ -58,14 +58,14 @@ export default function Banner() {
             animate="visible"
             className="text-center md:text-left"
           >
-            <motion.h1 
+            <motion.h1
               variants={itemVariants}
               className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight"
             >
-              Get <motion.span 
+              Get <motion.span
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
-                transition={{ 
+                transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
                   duration: 1.5
@@ -73,29 +73,29 @@ export default function Banner() {
                 className="bg-yellow-300 px-1 inline-block"
               >really</motion.span> good at programming
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               variants={itemVariants}
               className="mt-4 text-lg text-gray-700"
             >
               Develop fluency in <strong>76 programming languages</strong> with our unique blend of learning, practice and mentoring. Exercism is fun, effective and <strong>100% free, forever</strong>.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               variants={itemVariants}
               className="mt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
-                           <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition shadow-lg"
               >
-                <Link to='/sign-up'> 
-                Sign up for free</Link>
+                <Link to='/sign-up'>
+                  Sign up for free</Link>
               </motion.button>
-              
 
-              <motion.button 
+
+              <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-md hover:bg-indigo-50 transition shadow-md"
@@ -105,7 +105,7 @@ export default function Banner() {
             </motion.div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={imageVariants}
             initial="hidden"
             animate="visible"

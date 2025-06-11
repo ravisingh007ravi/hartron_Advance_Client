@@ -1,16 +1,15 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import ReCAPTCHA from 'react-google-recaptcha'; // ✅ new import
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { validationSchemaEMail } from './validation';
 
-export default function ForgotPassword() {  // Fixed component name from ForgatePassword to ForgotPassword
-
+export default function ForgotPassword() {
   const formik = useFormik({
     initialValues: {
       email: '',
-      hcaptcha: ''
+      recaptcha: '' // ✅ changed key name from hcaptcha to recaptcha
     },
     validationSchema: validationSchemaEMail,
     onSubmit: values => {
@@ -18,13 +17,9 @@ export default function ForgotPassword() {  // Fixed component name from Forgate
     },
   });
 
-  const handleHCaptchaVerify = (token) => {
-    formik.setFieldValue('hcaptcha', token);
-    formik.setFieldTouched('hcaptcha', true);
-  };
-
-  const handleHCaptchaExpire = () => {
-    formik.setFieldValue('hcaptcha', '');
+  const handleRecaptchaChange = (token) => {
+    formik.setFieldValue('recaptcha', token);
+    formik.setFieldTouched('recaptcha', true);
   };
 
   const INPUTDATA = [
@@ -33,7 +28,6 @@ export default function ForgotPassword() {  // Fixed component name from Forgate
 
   return (
     <div className="min-h-screen flex">
-      {/* Left: Form */}
       <motion.div
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -41,18 +35,16 @@ export default function ForgotPassword() {  // Fixed component name from Forgate
         className="w-full lg:w-1/2 p-10 flex flex-col justify-center"
       >
         <div className="flex justify-center mb-8 select-none">
-          <Link to='/'>         
-            <img src="https://res.cloudinary.com/dnpn8ljki/image/upload/v1749452665/logo_1_exrbma.png" alt="logo"
-              className="h-20"
-            />
+          <Link to='/'>
+            <img src="https://res.cloudinary.com/dnpn8ljki/image/upload/v1749452665/logo_1_exrbma.png" alt="logo" className="h-20" />
           </Link>
         </div>
 
-        <div className="mb-6">  {/* Added container for text content */}
+        <div className="mb-6">
           <h1 className="text-2xl font-bold mb-2">Forgot your password?</h1>
           <p className="text-gray-600">
-            If you've forgotten your password, use the form below to request a link to change it. 
-            Many people who think they've forgotten their password originally signed in using GitHub 
+            If you've forgotten your password, use the form below to request a link to change it.
+            Many people who think they've forgotten their password originally signed in using GitHub
             so you may like to try that too.
           </p>
         </div>
@@ -93,13 +85,12 @@ export default function ForgotPassword() {  // Fixed component name from Forgate
 
           <div>
             <label className="text-sm font-semibold mb-2 block">Confirm you're not a robot</label>
-            <HCaptcha
-              sitekey="1d122fe2-7f0e-422a-9a60-212c5100aaa"
-              onVerify={handleHCaptchaVerify}
-              onExpire={handleHCaptchaExpire}
+            <ReCAPTCHA
+              sitekey="YOUR_RECAPTCHA_SITE_KEY" // ⛔ Replace with your actual reCAPTCHA site key
+              onChange={handleRecaptchaChange}
             />
-            {formik.touched.hcaptcha && formik.errors.hcaptcha && (
-              <span className="text-sm text-red-500 mt-1 block">{formik.errors.hcaptcha}</span>
+            {formik.touched.recaptcha && formik.errors.recaptcha && (
+              <span className="text-sm text-red-500 mt-1 block">{formik.errors.recaptcha}</span>
             )}
           </div>
 
@@ -114,28 +105,13 @@ export default function ForgotPassword() {  // Fixed component name from Forgate
           </motion.button>
 
           <div className="text-sm text-center text-gray-700 space-y-1">
-            <p>
-              Already got an account?{' '}
-              <span className="text-blue-600 font-medium cursor-pointer hover:underline">
-                <Link to='/log-in'>Log in</Link></span>
-            </p>
-            <p>
-              Don't have an account yet?{' '}
-              <span className="text-blue-600 font-medium cursor-pointer hover:underline">
-                <Link to='/sign-up'>Sign up for free.</Link>
-              </span>
-            </p>
-            <p>
-              Didn't receive your confirmation email?{' '}
-              <span className="text-blue-600 font-medium cursor-pointer hover:underline">
-                <Link to='/confirmation-email'>Resend it</Link>
-              </span>
-            </p>
+            <p>Already got an account? <Link className="text-blue-600 font-medium hover:underline" to='/log-in'>Log in</Link></p>
+            <p>Don't have an account yet? <Link className="text-blue-600 font-medium hover:underline" to='/sign-up'>Sign up for free.</Link></p>
+            <p>Didn't receive your confirmation email? <Link className="text-blue-600 font-medium hover:underline" to='/confirmation-email'>Resend it</Link></p>
           </div>
         </form>
       </motion.div>
 
-      {/* Right: Image */}
       <div className="hidden lg:block w-1/2 select-none">
         <motion.img
           initial={{ x: 100, opacity: 0 }}
@@ -147,5 +123,5 @@ export default function ForgotPassword() {  // Fixed component name from Forgate
         />
       </div>
     </div>
-  )
+  );
 }

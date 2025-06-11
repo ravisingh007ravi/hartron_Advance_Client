@@ -1,15 +1,15 @@
 import * as Yup from 'yup';
 
-
 export const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().min(8, 'At least 8 characters').required('Password is required'),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Confirm your password'),
-    hcaptcha: Yup.string().required('Please complete the captcha'),
-  });
-  
-export const validationSchemaEMail = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Email is required'),
-  });
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string().min(6, 'Too short').required('Required'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .required('Required'),
+  recaptcha: Yup.string().required('Please complete the reCAPTCHA'),
+});
+
+export const validationSchemaEMail = Yup.object({
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  recaptcha: Yup.string().required('Please verify you are not a robot'), // ✅ add this line
+});

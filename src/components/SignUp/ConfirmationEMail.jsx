@@ -2,28 +2,23 @@ import { useFormik } from 'formik';
 import { motion } from 'framer-motion';
 import { validationSchemaEMail } from './Validation';
 import { Link } from 'react-router-dom';
-import HCaptcha from '@hcaptcha/react-hcaptcha'; // Import HCaptcha
+import ReCAPTCHA from 'react-google-recaptcha'; // ✅ Import reCAPTCHA
 
 export default function ConfirmationEMail() {
   const formik = useFormik({
     initialValues: {
       email: '',
-      hcaptcha: '' // Add hcaptcha to initial values
+      recaptcha: '' // ✅ reCAPTCHA field
     },
-    validationSchema: validationSchemaEMail, // Changed from validationSchemaEMail to validationSchema
+    validationSchema: validationSchemaEMail,
     onSubmit: values => {
       console.log('Form submitted:', values);
     },
   });
 
-  // Add these handler functions
-  const handleHCaptchaVerify = (token) => {
-    formik.setFieldValue('hcaptcha', token);
-    formik.setFieldTouched('hcaptcha', true);
-  };
-
-  const handleHCaptchaExpire = () => {
-    formik.setFieldValue('hcaptcha', '');
+  const handleRecaptchaChange = (token) => {
+    formik.setFieldValue('recaptcha', token);
+    formik.setFieldTouched('recaptcha', true);
   };
 
   const INPUTDATA = [
@@ -81,15 +76,15 @@ export default function ConfirmationEMail() {
             </motion.div>
           ))}
 
+          {/* ✅ reCAPTCHA */}
           <div>
             <label className="text-sm font-semibold mb-2 block">Confirm you're not a robot</label>
-            <HCaptcha
-              sitekey="1d122fe2-7f0e-422a-9a60-212c5100aaa"
-              onVerify={handleHCaptchaVerify}
-              onExpire={handleHCaptchaExpire}
+            <ReCAPTCHA
+              sitekey="YOUR_GOOGLE_RECAPTCHA_SITE_KEY"
+              onChange={handleRecaptchaChange}
             />
-            {formik.touched.hcaptcha && formik.errors.hcaptcha && (
-              <span className="text-sm text-red-500 mt-1 block">{formik.errors.hcaptcha}</span>
+            {formik.touched.recaptcha && formik.errors.recaptcha && (
+              <span className="text-sm text-red-500 mt-1 block">{formik.errors.recaptcha}</span>
             )}
           </div>
 
@@ -111,7 +106,8 @@ export default function ConfirmationEMail() {
             </p>
             <p>
               Don't have an account yet?{' '}
-              <span className="text-blue-600 font-medium cursor-pointer hover:underline"><Link to='/sign-up'>Sign up for free.</Link></span>
+              <span className="text-blue-600 font-medium cursor-pointer hover:underline">
+                <Link to='/sign-up'>Sign up for free.</Link></span>
             </p>
           </div>
         </form>
@@ -129,5 +125,5 @@ export default function ConfirmationEMail() {
         />
       </div>
     </div>
-  )
+  );
 }

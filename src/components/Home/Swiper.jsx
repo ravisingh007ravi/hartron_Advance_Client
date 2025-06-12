@@ -99,8 +99,8 @@ export default function ExpoSwiper() {
         onInit={handleSlideChange}
         className="w-full md:h-[550px] "
       >
-        {slides.map(({ title, img }) => (
-          <SwiperSlide key={title} className="expo-slide">
+        {slides.map(({ title, img },index) => (
+          <SwiperSlide key={index} className="expo-slide">
             <div className="relative md:h-full w-full">
               <img
                 data-swiper-parallax="-15%"

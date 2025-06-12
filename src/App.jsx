@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar, Home, Signup, LogIn, ViewCourse, CenterHead, Faculty, ConfirmationEMail,ForgatePassword
-
- } from './AllComponents.js';
+,ViewAllCourse} from './AllComponents.js';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 function AppContent() {
@@ -22,6 +21,7 @@ function AppContent() {
         <Route path='/faculty' element={<Faculty />} />
         <Route path='/confirmation-email' element={<ConfirmationEMail />} />
         <Route path='/forgate-password' element={<ForgatePassword />} />
+        <Route path='/view-all-course' element={<ViewAllCourse />} />
       </Routes>
     </>
   );

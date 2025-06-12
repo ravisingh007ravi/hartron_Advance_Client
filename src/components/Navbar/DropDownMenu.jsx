@@ -30,9 +30,8 @@ export default function DropDownMenu() {
 
         {isOpen && (
           <div className="absolute left-0 mt-0 w-56 origin-top-left bg-gray-100 border border-gray-200 rounded-md shadow-lg z-50">
-            {AboutData.map(({ name, link, icon }) => (
-              <Link
-                key={name}
+            {AboutData.map(({ name, link, icon },index) => (
+              <Link key={index}
                 to={link}
                 className="flex items-center px-4 py-3 text-sm rounded-md text-gray-700 hover:bg-blue-500 hover:text-white"
               >

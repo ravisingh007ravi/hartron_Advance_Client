@@ -93,7 +93,7 @@ export default function Testimonials() {
               perSlideRotate: 1,
               slideShadows: true,
             }}
-            loop={true}
+            loop={false}
             className="w-full max-w-4xl h-[450px]"
             onSwiper={(swiper) => {
               // This callback ensures Swiper is fully initialized

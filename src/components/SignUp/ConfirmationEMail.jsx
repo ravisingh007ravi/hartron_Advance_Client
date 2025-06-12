@@ -104,11 +104,11 @@ export default function ConfirmationEMail() {
               <span className="text-blue-600 font-medium cursor-pointer hover:underline">
                 <Link to='/log-in'>Log in</Link></span>
             </p>
-            <p>
+            {/* <p>
               Don't have an account yet?{' '}
               <span className="text-blue-600 font-medium cursor-pointer hover:underline">
                 <Link to='/sign-up'>Sign up for free.</Link></span>
-            </p>
+            </p> */}
           </div>
         </form>
       </motion.div>

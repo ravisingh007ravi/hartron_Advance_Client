@@ -85,14 +85,15 @@ export default function Banner() {
               variants={itemVariants}
               className="mt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
-              <motion.button
+              {/* <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition shadow-lg"
               >
                 <Link to='/sign-up'>
-                  Sign up for free</Link>
-              </motion.button>
+                  Sign up for free
+                  </Link>
+              </motion.button> */}
 
 
               <motion.button

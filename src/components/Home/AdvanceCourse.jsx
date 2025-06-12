@@ -1,115 +1,332 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { HartronSkillCenter, HartronAdvanceSkillCenter } from './DataCourse';
 
 export default function ChooseRole() {
-  const roles = [
-    {
-      img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
-      title: "Data Analyst",
-      description: "A Data Analyst collects, cleans, and interprets data, using tools like Excel, SQL, and Tableau to analyze trends and provide insights for decisions.",
-      likes: "analyzing data to find insights, creating reports and visualizations, working with spreadsheets and databases",
-      salary: "$289,008",
-      jobs: "23,498",
-      credentials: [
-        "IBM Data Analyst",
-        "DeepLearning AI Data Analytics",
-        "+ 5 more"
-      ]
-    },
-    {
-      img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/cyber-security_wnjhc3.avif',
-      title: "Data Scientist",
-      description: "A Data Scientist analyzes large datasets to uncover insights, using statistics, machine learning, and visualization to inform business strategies.",
-      likes: "analyzing complex datasets, developing machine learning models, solving statistical problems",
-      salary: "$452,053",
-      jobs: "21,629",
-      credentials: [
-        "IBM Data Science"
-      ]
-    },
-    {
-      img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/Intelligence_wsydm4.avif',
-      title: "Cyber Security Analyst",
-      description: "A Cyber Security Analyst monitors IT systems, analyzes threats, finds vulnerabilities, and implements measures to protect data from cyber attacks.",
-      likes: "protecting networks and data from cyber threats, analyzing security vulnerabilities, developing security protocols",
-      salary: "$2,125,458",
-      jobs: "2,153",
-      credentials: [
-        "Google Cybersecurity",
-        "Microsoft Cybersecurity Analyst",
-        "+ 4 more"
-      ]
+  const [showAll, setShowAll] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('Hartron Advance Skill Center');
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  const filteredRoles = selectedCategory === 'Hartron Advance Skill Center'
+    ? HartronAdvanceSkillCenter
+    : HartronSkillCenter;
+
+  const displayedRoles = showAll ? filteredRoles : filteredRoles.slice(0, 3);
+
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
     }
-  ];
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
+  const tabContent = {
+    hidden: { opacity: 0 },
+    show: { 
+      opacity: 1,
+      transition: { duration: 0.3 }
+    }
+  };
 
   return (
-    <div className="px-6 py-16 bg-gray-50">
+    <div className="px-4 sm:px-6 py-16 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Ready to reimagine your career?</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">Get the skills and real-world experience employers want with Career Accelerators.</p>
-        </div>
+        {/* Hero Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Ready to <span className="text-blue-600">reimagine</span> your career?
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            Get the skills and real-world experience employers want with our Career Accelerators.
+          </motion.p>
+        </motion.div>
 
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800">Explore all roles</h2>
-          <Link to='/view-all-course'>
-          <button className="text-blue-600 font-medium hover:text-blue-800 transition">
-            View all roles →
-          </button>
-          </Link>
-        </div>
-        
-        <div className="grid gap-8 lg:grid-cols-3 md:grid-cols-2">
-          {roles.map((role, idx) => (
-            <div key={idx} className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
-              <img 
-                className='w-full h-48 object-cover' 
-                src={role.img} 
-                alt={role.title} 
-              />
-              
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex items-center mb-2">
-                  <span className="inline-block w-3 h-3 rounded-full bg-blue-500 mr-2"></span>
-                  <span className="text-sm font-medium text-blue-600">{role.title.split(' ')[0]}</span>
-                </div>
-                
-                <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition">{role.title}</h3>
-                <p className="text-gray-600 mb-4">{role.description}</p>
-                
-                <div className="mb-4 bg-gray-50 p-3 rounded-lg">
-                  <p className="font-medium text-gray-800 mb-1">If you like:</p>
-                  <p className="text-gray-600 text-sm">{role.likes}</p>
-                </div>
-                
-                <div className="flex gap-4 mb-6">
-                  <div className="bg-blue-50 p-3 rounded-lg flex-1">
-                    <p className="font-bold text-blue-700 text-lg">{role.salary}</p>
-                    <p className="text-xs text-gray-500">median salary</p>
-                  </div>
-                  <div className="bg-green-50 p-3 rounded-lg flex-1">
-                    <p className="font-bold text-green-700 text-lg">{role.jobs}</p>
-                    <p className="text-xs text-gray-500">jobs available</p>
-                  </div>
-                </div>
-                
-                <div className="mt-auto">
-                  <h4 className="font-medium text-gray-800 mb-2">Credentials</h4>
-                  <ul className="space-y-2">
-                    {role.credentials.map((credential, i) => (
-                      <li key={i} className="flex items-center">
-                        <svg className="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-gray-600">{credential}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+        {/* Category Tabs */}
+        <motion.div 
+          className="flex justify-center gap-4 sm:gap-20 py-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          {['Hartron Skill Center', 'Hartron Advance Skill Center'].map((cat) => (
+            <motion.button
+              key={cat}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`relative px-4 py-2 text-lg font-medium rounded-full transition-colors ${
+                selectedCategory === cat 
+                  ? 'text-white bg-blue-600 shadow-lg shadow-blue-500/20' 
+                  : 'text-gray-600 hover:text-blue-600'
+              }`}
+              onClick={() => {
+                setSelectedCategory(cat);
+                setShowAll(false);
+              }}
+            >
+              {cat} Course
+              {selectedCategory === cat && (
+                <motion.span 
+                  layoutId="tabUnderline"
+                  className="absolute inset-0 bg-blue-600 rounded-full z-[-1]"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedCategory}
+            variants={tabContent}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="mb-12"
+          >
+            {/* Header with View All */}
+            <div className="flex justify-between items-center mb-8">
+              <motion.h2 
+                className="text-2xl md:text-3xl font-semibold text-gray-800"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                Explore all roles
+              </motion.h2>
+              {!showAll && filteredRoles.length > 3 && (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowAll(true)}
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full shadow-md hover:shadow-lg transition-all"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  View all roles
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </motion.button>
+              )}
+            </div>
+
+            {/* Role Cards Grid */}
+            <motion.div 
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="grid gap-8 lg:grid-cols-3 md:grid-cols-2"
+            >
+              {displayedRoles.map((role, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={item}
+                  whileHover={{ 
+                    y: -10,
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                  }}
+                  onMouseEnter={() => setHoveredCard(idx)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full relative"
+                >
+                  {/* Hover overlay effect */}
+                  {hoveredCard === idx && (
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/10 pointer-events-none"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    />
+                  )}
+
+                  {/* Image with shine effect */}
+                  <div className="relative overflow-hidden h-48">
+                    <motion.img 
+                      className="w-full h-full object-cover"
+                      src={role.img} 
+                      alt={role.title}
+                      initial={{ scale: 1 }}
+                      animate={{ 
+                        scale: hoveredCard === idx ? 1.05 : 1,
+                        transition: { duration: 0.5 }
+                      }}
+                    />
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"
+                      initial={{ opacity: 0.4 }}
+                      animate={{ 
+                        opacity: hoveredCard === idx ? 0.6 : 0.4,
+                        transition: { duration: 0.3 }
+                      }}
+                    />
+                  </div>
+
+                  <div className="p-6 flex flex-col flex-grow">
+                    {/* Title with animated underline */}
+                    <h3 className="text-xl font-bold text-gray-800 mb-3 relative inline-block">
+                      <span>{role.title}</span>
+                      <motion.span 
+                        className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600"
+                        initial={{ width: 0 }}
+                        animate={{ width: hoveredCard === idx ? '100%' : 0 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </h3>
+
+                    <p className="text-gray-600 mb-4">{role.description}</p>
+
+                    {role.likes && (
+                      <motion.div 
+                        className="mb-4 bg-gray-50 p-3 rounded-lg"
+                        whileHover={{ scale: 1.02 }}
+                      >
+                        <p className="font-medium text-gray-800 mb-1">If you like:</p>
+                        <p className="text-gray-600 text-sm">{role.likes}</p>
+                      </motion.div>
+                    )}
+
+                    {role.salary && role.jobs && (
+                      <motion.div 
+                        className="flex gap-4 mb-6"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-3 rounded-lg flex-1 border border-blue-100">
+                          <p className="font-bold text-blue-700 text-lg">{role.salary}</p>
+                          <p className="text-xs text-gray-500">median salary</p>
+                        </div>
+                        <div className="bg-gradient-to-r from-green-50 to-green-100 p-3 rounded-lg flex-1 border border-green-100">
+                          <p className="font-bold text-green-700 text-lg">{role.jobs}</p>
+                          <p className="text-xs text-gray-500">jobs available</p>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {role.credentials && (
+                      <div className="mb-4">
+                        <h4 className="font-medium text-gray-800 mb-2">Credentials</h4>
+                        <ul className="space-y-2">
+                          {role.credentials.map((credential, i) => (
+                            <motion.li 
+                              key={i} 
+                              className="flex items-center"
+                              whileHover={{ x: 5 }}
+                            >
+                              <svg className="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span className="text-gray-600">{credential}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {role.skills && (
+                      <div className="mb-4">
+                        <h4 className="font-medium text-gray-800 mb-2">Key Skills</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {role.skills.map((skill, i) => (
+                            <motion.span 
+                              key={i} 
+                              className="px-3 py-1 text-xs bg-blue-100 text-blue-800 rounded-full"
+                              whileHover={{ 
+                                scale: 1.1,
+                                backgroundColor: "#3b82f6",
+                                color: "#ffffff"
+                              }}
+                            >
+                              {skill}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="mt-auto pt-4">
+                      <div className="flex flex-col gap-1 text-sm text-gray-500 mb-2">
+                        {role.Duration_hours && (
+                          <p><strong>Duration (Hours):</strong> {role.Duration_hours}</p>
+                        )}
+                        {role.NSQF && (
+                          <p><strong>NSQF Level:</strong> {role.NSQF}</p>
+                        )}
+                      </div>
+
+                      {role.certification && (
+                        <p className="text-sm text-gray-500"><strong>Certification:</strong> {role.certification}</p>
+                      )}
+                      {role.duration && (
+                        <p className="text-sm text-gray-500"><strong>Duration:</strong> {role.duration}</p>
+                      )}
+                      {role.eligibility && (
+                        <p className="text-sm text-gray-500"><strong>Eligibility:</strong> {role.eligibility}</p>
+                      )}
+                    </div>
+
+                    {/* Animated CTA Button */}
+                    <motion.button
+                      whileHover={{ 
+                        scale: 1.05,
+                        boxShadow: "0 4px 6px -1px rgba(59, 130, 246, 0.5), 0 2px 4px -1px rgba(59, 130, 246, 0.06)"
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      className="mt-6 w-full py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg font-medium"
+                    >
+                      Learn More
+                    </motion.button>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Show Less Button */}
+            {showAll && filteredRoles.length > 3 && (
+              <motion.div 
+                className="text-center mt-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowAll(false)}
+                  className="px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors"
+                >
+                  Show Less
+                </motion.button>
+              </motion.div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

@@ -20,11 +20,12 @@ const courses = [
     description: "Advanced IT training with certifications in cutting-edge technologies like AI, Web Development, and Cloud computing for career advancement.",
     image: "https://hartronkaithal.in/wp-content/uploads/2024/12/I-1.png",
     highlights: [
-      "Advanced technology courses",
-      "Professional certifications",
-      "Expert instructors",
-      "Career development"
-    ]
+  "Advanced technology courses",
+  "Professional certifications",
+  "Expert instructors",
+  "Career development",
+  "Hands-on project-based learning"
+] 
   }
 ];
 
@@ -85,14 +86,14 @@ export default function Course() {
               </motion.div>
 
               <div className="p-6 md:w-1/2 flex flex-col justify-between">
-                <motion.h3
+                {/* <motion.h3
                   className="text-2xl font-semibold text-gray-800 mb-3"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
                   {course.title}
-                </motion.h3>
+                </motion.h3> */}
 
                 <motion.p
                   className="text-gray-600 mb-5 text-sm leading-relaxed"

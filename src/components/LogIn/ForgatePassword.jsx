@@ -106,7 +106,7 @@ export default function ForgotPassword() {
 
           <div className="text-sm text-center text-gray-700 space-y-1">
             <p>Already got an account? <Link className="text-blue-600 font-medium hover:underline" to='/log-in'>Log in</Link></p>
-            <p>Don't have an account yet? <Link className="text-blue-600 font-medium hover:underline" to='/sign-up'>Sign up for free.</Link></p>
+            {/* <p>Don't have an account yet? <Link className="text-blue-600 font-medium hover:underline" to='/sign-up'>Sign up for free.</Link></p> */}
             <p>Didn't receive your confirmation email? <Link className="text-blue-600 font-medium hover:underline" to='/confirmation-email'>Resend it</Link></p>
           </div>
         </form>

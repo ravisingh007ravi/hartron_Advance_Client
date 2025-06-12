@@ -36,6 +36,11 @@ export default function Navbar() {
     { icon: <FaYoutube className="text-[#FF0000] hover:text-[#CC0000]" />, url: '#' },
   ];
 
+  const Auth = [
+    // {name:"Sign up",href:'/sign-up',css:'px-4 py-1.5 text-sm font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition'},
+    {name:"Log-In",href:'/log-in',css:'px-4 py-1.5 text-sm font-medium rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm hover:from-blue-700 hover:to-indigo-700 transition'},
+  ]
+
   return (
     <header className="w-full sticky top-0 z-50">
       <motion.div
@@ -110,24 +115,18 @@ export default function Navbar() {
                   </motion.div>
                 ) : (
                   <div className="hidden lg:flex items-center gap-5">
-                    <Link to="/sign-up">
+                    {
+                      Auth.map(({name,href,css},index)=>(
+                        <Link to={href}>
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-4 py-1.5 text-sm font-medium rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm hover:from-blue-700 hover:to-indigo-700 transition"
-                      >
-                        Sign up
+                        className={css}>
+                        {name}
                       </motion.button>
                     </Link>
-                    <Link to="/log-in">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-4 py-1.5 text-sm font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition"
-                      >
-                        Log in
-                      </motion.button>
-                    </Link>
+                      ))
+                    }
                   </div>
                 )}
               </div>
@@ -170,24 +169,18 @@ export default function Navbar() {
 
           <div className="lg:hidden flex justify-center mt-4">
             <div className="flex items-center gap-4">
-              <Link to="/sign-up">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-5 py-2 text-sm font-medium rounded-md bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition"
-                >
-                  Sign up
-                </motion.button>
-              </Link>
-              <Link to="/log-in">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-5 py-2 text-sm font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition"
-                >
-                  Log in
-                </motion.button>
-              </Link>
+               {
+                      Auth.map(({name,href,css},index)=>(
+                        <Link to={href}>
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={css}>
+                        {name}
+                      </motion.button>
+                    </Link>
+                      ))
+                    }
             </div>
           </div>
         </ul>

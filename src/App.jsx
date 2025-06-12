@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Home, Signup, LogIn, ViewCourse, CenterHead, Faculty, ConfirmationEMail,ForgatePassword
-,ViewAllCourse} from './AllComponents.js';
+,ViewAllCourse,Footer} from './AllComponents.js';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 function AppContent() {
@@ -23,6 +23,7 @@ function AppContent() {
         <Route path='/forgate-password' element={<ForgatePassword />} />
         <Route path='/view-all-course' element={<ViewAllCourse />} />
       </Routes>
+      <Footer/>
     </>
   );
 }

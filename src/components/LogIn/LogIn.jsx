@@ -128,7 +128,7 @@ export default function LogIn() {
 
           {/* Links */}
           <div className="text-sm text-center text-gray-700 space-y-1">
-            <p>
+            {/* <p>
               Don't have an account?{' '}
               <Link
                 to="/sign-up"
@@ -136,7 +136,7 @@ export default function LogIn() {
               >
                 Sign Up
               </Link>
-            </p>
+            </p> */}
             <p>
               Forgot password?{' '}
               <span className="text-blue-600 font-medium cursor-pointer hover:underline">

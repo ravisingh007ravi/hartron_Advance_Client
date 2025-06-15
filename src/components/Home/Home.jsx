@@ -10,7 +10,7 @@ export default function Home() {
     <div>
       <Swiper />
       <Course />
-      <Banner />
+      {/* <Banner /> */}
       <AdvanceCourse />
       <Testimonials />
       <Placement />

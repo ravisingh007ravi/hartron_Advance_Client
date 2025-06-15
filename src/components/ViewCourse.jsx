@@ -8,7 +8,7 @@ export default function ViewCourse() {
   return (
     <div>
       
-      <div className='flex justify-center items-center uppercase tektur-font mt-10 text-5xl font-semibold'>
+      <div className='flex justify-center items-center uppercase mt-10 text-5xl font-semibold'>
         <h1>{formattedCourseId}</h1>
       </div>
 

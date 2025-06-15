@@ -51,7 +51,7 @@ const highlightVariants = {
 export default function Course() {
   return (
     <div className="max-w-screen-2xl mx-auto px-6 py-16">
-      <h2 className="text-center text-4xl font-bold mb-14 text-blue-700">Our Courses</h2>
+      {/* <h2 className="text-center text-4xl font-bold mb-14 text-blue-700">Our Courses</h2> */}
 
       <div className="grid md:grid-cols-2 gap-12">
         {courses.map((course, index) => (

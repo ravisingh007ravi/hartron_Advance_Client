@@ -1,6 +1,6 @@
 export const HartronAdvanceSkillCenter= [
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896041/AI_-_Database_Administrator_pqxej8.jpg',
         title: "AI - Database Administrator",
         description: "A Data Analyst collects, cleans, and interprets data, using tools like Excel, SQL, and Tableau to analyze trends and provide insights for decisions.",
         likes: "analyzing data to find insights, creating reports and visualizations, working with spreadsheets and databases",
@@ -13,10 +13,9 @@ export const HartronAdvanceSkillCenter= [
         ],
         Duration_hours: "450",
         NSQF: "5.0",
-        category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896041/AI_Data_Scientist_saitbp.jpg',
         title: "AI Data Scientist",
         description: "An AI Data Scientist develops machine learning models and algorithms to extract insights from complex datasets, driving business decisions and innovation.",
         likes: "working with large datasets, developing predictive models, solving complex problems with AI",
@@ -32,7 +31,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749794076/ai-generated-8540920_1280_vxqxqs.jpg',
         title: "Artificial Intelligence Application Developer",
         description: "Develops AI-powered applications and systems that can perform tasks typically requiring human intelligence, such as visual perception and decision-making.",
         likes: "programming AI solutions, integrating AI into applications, working with neural networks",
@@ -48,7 +47,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896041/Artificial_Intelligence_Associate_nvzdby.jpg',
         title: "Artificial Intelligence Associate",
         description: "Entry-level AI professional assisting in developing and implementing AI solutions, with foundational knowledge of machine learning and data processing.",
         likes: "learning AI concepts, assisting in AI projects, working with data preprocessing",
@@ -64,7 +63,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896038/Cyber_Secured_Web_Development_Associate_ffle07.jpg',
         title: "Cyber Secured Web Development Associate",
         description: "Develops secure web applications with knowledge of cybersecurity principles to protect against vulnerabilities and attacks.",
         likes: "building secure websites, implementing security protocols, coding with protection in mind",
@@ -80,7 +79,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896039/Cyber_Security_and_Social_Media_Analyst_qlbzwc.jpg',
         title: "Cyber Security and Social Media Analyst",
         description: "Monitors and analyzes social media platforms for security threats, protecting organizations from digital risks and reputation damage.",
         likes: "tracking online threats, analyzing social media patterns, implementing security measures",
@@ -96,7 +95,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/cyber-security_wnjhc3.avif',
         title: "Cyber Security Associate",
         description: "Entry-level cybersecurity professional assisting in protecting systems and networks from digital attacks and unauthorized access.",
         likes: "learning security protocols, monitoring systems for threats, assisting in vulnerability assessments",
@@ -112,7 +111,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896041/Data_Analysis_Associate_HD_epkhlu.jpg',
         title: "Data Analysis Associate",
         description: "Assists in collecting, processing, and performing statistical analyses on datasets to help organizations make data-driven decisions.",
         likes: "working with data visualization tools, cleaning datasets, creating basic reports",
@@ -128,7 +127,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896944/Internet_of_Things_IoT_Associate_HD_xtdwr8.jpg',
         title: "Internet of Things (IoT) Associate",
         description: "Works with IoT devices and systems, assisting in connecting physical devices to networks and analyzing sensor data.",
         likes: "working with smart devices, connecting hardware to software, analyzing sensor data",
@@ -144,7 +143,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896810/Artificial_Intelligence_Application_Developer_gej0zc.jpg',
         title: "IoT - Software Analyst",
         description: "Analyzes and develops software solutions for IoT systems, ensuring seamless communication between devices and platforms.",
         likes: "developing IoT applications, analyzing system requirements, optimizing device communication",
@@ -160,7 +159,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896040/Junior_Cloud_Computing_Associate_HD_hj4jvb.jpg',
         title: "Junior Cloud Computing Associate",
         description: "Entry-level professional assisting in cloud-based solutions, learning to deploy and manage applications in cloud environments.",
         likes: "working with cloud platforms, learning deployment strategies, assisting in cloud migrations",
@@ -176,7 +175,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896712/Junior_Cyber_Security_Associate_h4txtp.jpg',
         title: "Junior Cyber Security Associate",
         description: "Begins career in cybersecurity, learning fundamental security concepts and assisting in basic protection measures.",
         likes: "learning about cyber threats, assisting in security monitoring, understanding security frameworks",
@@ -192,7 +191,7 @@ export const HartronAdvanceSkillCenter= [
         category: "Hartron Advance Skill Center"
     },
     {
-        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+        img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749896041/Junior_Data_Analyst_HD_vmbpxi.jpg',
         title: "Junior Data Analyst",
         description: "Entry-level position assisting senior analysts in collecting, cleaning, and interpreting data to support business decisions.",
         likes: "working with spreadsheets, learning data visualization, assisting in report generation",
@@ -212,7 +211,7 @@ export const HartronAdvanceSkillCenter= [
  export const HartronSkillCenter = [
   {
     id: "HSC-001",
-    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749897520/COMPUTER_HARDWARE_AND_NETWORKING_ASSOCIATE_c7eegv.jpg',
     title: 'COMPUTER HARDWARE AND NETWORKING ASSOCIATE',
     description: "Professional training in computer assembly, networking fundamentals, and hardware troubleshooting. Gain hands-on experience with routers, switches, and system maintenance.",
     likes: "assembling computers, configuring networks, solving technical issues",
@@ -227,7 +226,7 @@ export const HartronAdvanceSkillCenter= [
   },
   {
     id: "HSC-002",
-    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749897521/COURSE_IN_COMPUTER_APPLICATION_eys9e8.jpg',
     title: 'COURSE IN COMPUTER APPLICATION',
     description: "Comprehensive training in office productivity tools including advanced Excel, Word processing, presentation software, and internet applications for professional environments.",
     likes: "creating documents, analyzing data, making presentations",
@@ -242,7 +241,7 @@ export const HartronAdvanceSkillCenter= [
   },
   {
     id: "HSC-003",
-    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749897520/COURSE_IN_DIGITAL_ACCOUNTING_lcp9ls.jpg',
     title: 'COURSE IN DIGITAL ACCOUNTING',
     description: "Master computerized accounting with Tally Prime, GST filing, payroll management, and financial reporting for modern business accounting needs.",
     likes: "working with numbers, financial calculations, using accounting software",
@@ -257,7 +256,7 @@ export const HartronAdvanceSkillCenter= [
   },
   {
     id: "HSC-004",
-    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749897520/COURSE_IN_DESIGNING_AND_PUBLISHING_fsi3sc.jpg',
     title: 'COURSE IN DESIGNING AND PUBLISHING',
     description: "Professional graphic design training covering Adobe Creative Suite (Photoshop, Illustrator, InDesign) for print and digital media publishing.",
     likes: "creating visual designs, working with colors, expressing creativity",
@@ -272,7 +271,7 @@ export const HartronAdvanceSkillCenter= [
   },
   {
     id: "HSC-005",
-    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749897520/COURSE_IN_WEB_TECHNOLOG_aitjie.jpg',
     title: 'COURSE IN WEB TECHNOLOGY',
     description: "Full-stack web development course covering HTML5, CSS3, JavaScript, and CMS platforms for building responsive and interactive websites.",
     likes: "coding websites, solving design challenges, creating user interfaces",
@@ -287,7 +286,7 @@ export const HartronAdvanceSkillCenter= [
   },
   {
     id: "HSC-006",
-    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749897520/COURSE_IN_SOFTWARE_DEVELOPMENT_xxzqu2.jpg',
     title: 'COURSE IN SOFTWARE DEVELOPMENT',
     description: "Fundamentals of software engineering covering programming logic, algorithms, and application development using modern development tools.",
     likes: "solving problems with code, building applications, logical thinking",
@@ -302,7 +301,7 @@ export const HartronAdvanceSkillCenter= [
   },
   {
     id: "HSC-007",
-    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749706316/full_stack_tfxslb.avif',
+    img: 'https://res.cloudinary.com/dnpn8ljki/image/upload/v1749898284/ADVANCED_COURSE_IN_COMPUTER_APPLICATION_HD_1_b7sxak.jpg',
     title: 'ADVANCED COURSE IN COMPUTER APPLICATION',
     description: "Advanced training in computer applications including database management, advanced Excel macros, and professional presentation techniques.",
     likes: "data analysis, automating tasks, creating dashboards",

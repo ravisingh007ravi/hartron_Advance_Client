@@ -1,16 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import {
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
-  FaBookOpen,
-  FaMapMarkedAlt,
-  FaBlog,
-  FaPhoneAlt,
-  FaHome,
-} from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaYoutube, FaMapMarkedAlt, FaBlog, FaPhoneAlt, FaHome, } from 'react-icons/fa';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { MdClose } from 'react-icons/md';
 import DropdownMenuProfile from './DropdownMenuProfile';
@@ -38,7 +29,7 @@ export default function Navbar() {
 
   const Auth = [
     // {name:"Sign up",href:'/sign-up',css:'px-4 py-1.5 text-sm font-medium rounded-md border border-blue-600 text-blue-600 hover:bg-blue-50 transition'},
-    {name:"Log-In",href:'/log-in',css:'px-4 py-1.5 text-sm font-medium rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm hover:from-blue-700 hover:to-indigo-700 transition'},
+    { name: "Log-In", href: '/log-in', css: 'px-4 py-1.5 text-sm font-medium rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm hover:from-blue-700 hover:to-indigo-700 transition' },
   ]
 
   return (
@@ -60,7 +51,7 @@ export default function Navbar() {
       </motion.div>
 
       <nav className="bg-white shadow-md">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 py-5">
           <div className="flex items-center justify-between h-16">
             <Link to="/">
               <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
@@ -69,22 +60,22 @@ export default function Navbar() {
                   alt="Academy Logo"
                   className="h-15"
                 />
+                <h1 className='text-blue-900 font-extrabold text-xl'>HARTRON KAITHAL</h1>
               </motion.div>
             </Link>
 
-            <div className="hidden lg:flex items-center space-x-1">
+            <div className="hidden lg:flex items-center space-x-1 pt-10">
               {MENU_DATA.map((item) => (
-                <motion.div key={item.id} whileHover={{ scale: 1.05 }} className="relative group">
+                <motion.div key={item.id} whileHover={{ scale: 1.05 }} className="relative group ">
                   {item.type === 'dropdown' ? (
                     <DropDownMenu />
                   ) : item.type === 'AllCourseDropDown' ? (
-                    <AllCourseDropDown />
+                    <div className='text-md'><AllCourseDropDown /></div>
                   ) : (
                     <Link
                       to={item.link}
-                      className={`px-3 py-2 rounded-md text-sm font-medium flex items-center ${
-                        item.current ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
-                      }`}
+                      className={`px-3 py-2 rounded-md text-md font-medium flex items-center ${item.current ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                        }`}
                     >
                       {item.icon && <span className="mr-1">{item.icon}</span>}
                       {item.label}
@@ -116,22 +107,22 @@ export default function Navbar() {
                 ) : (
                   <div className="hidden lg:flex items-center gap-5">
                     {
-                      Auth.map(({name,href,css},index)=>(
+                      Auth.map(({ name, href, css }, index) => (
                         <Link to={href}>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={css}>
-                        {name}
-                      </motion.button>
-                    </Link>
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className={css}>
+                            {name}
+                          </motion.button>
+                        </Link>
                       ))
                     }
                   </div>
                 )}
               </div>
 
-              <div className="md:hidden">
+              <div className="lg:hidden">
                 {bar ? <MdClose size={25} onClick={() => setBar(!bar)} /> : <FaBarsStaggered size={25} onClick={() => setBar(!bar)} />}
               </div>
             </div>
@@ -139,52 +130,102 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <motion.div
-        initial={false}
-        animate={bar ? 'open' : 'closed'}
-        variants={{
-          open: { opacity: 1, height: 'auto', transition: { staggerChildren: 0.1, when: 'beforeChildren' } },
-          closed: { opacity: 0, height: 0, transition: { staggerChildren: 0.05, staggerDirection: -1, when: 'afterChildren' } },
-        }}
-        className="md:hidden w-full bg-white overflow-hidden border-t border-gray-200 shadow-inner"
+     <motion.div
+  initial={false}
+  animate={bar ? 'open' : 'closed'}
+  variants={{
+    open: { 
+      opacity: 1, 
+      height: 'auto', 
+      transition: { 
+        staggerChildren: 0.07, 
+        when: 'beforeChildren' 
+      } 
+    },
+    closed: { 
+      opacity: 0, 
+      height: 0, 
+      transition: { 
+        staggerChildren: 0.05, 
+        staggerDirection: -1, 
+        when: 'afterChildren' 
+      } 
+    },
+  }}
+  className="lg:hidden w-full bg-white overflow-hidden border-t border-gray-100 shadow-lg"
+>
+  <ul className="flex flex-col p-4 space-y-1">
+    {MENU_DATA.map((item, key) => (
+      <motion.li 
+        key={key} 
+        variants={{ 
+          open: { 
+            opacity: 1, 
+            y: 0,
+            transition: { type: 'spring', stiffness: 300, damping: 24 }
+          }, 
+          closed: { 
+            opacity: 0, 
+            y: -10,
+            transition: { duration: 0.2 }
+          } 
+        }} 
+        className="relative"
       >
-        <ul className="flex flex-col text-center space-y-2 p-4">
-          {MENU_DATA.map((item, key) => (
-            <motion.li key={key} variants={{ open: { opacity: 1, y: 0 }, closed: { opacity: 0, y: -20 } }} className="relative">
-              {item.type === 'dropdown' ? (
-                <DropDownMenu />
-              ) : item.type === 'AllCourseDropDown' ? (
-                <AllCourseDropDown />
-              ) : (
-                <Link
-                  to={item.link}
-                  className="flex items-center justify-center gap-2 rounded-md text-lg font-medium px-3 py-2 text-gray-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
-                >
-                  <span className="text-xl text-blue-500">{item.icon}</span>
-                  {item.label}
-                </Link>
-              )}
-            </motion.li>
-          ))}
+        {item.type === 'dropdown' ? (
+          <DropDownMenu />
+        ) : item.type === 'AllCourseDropDown' ? (
+          <AllCourseDropDown />
+        ) : (
+          <Link
+            to={item.link}
+            className="flex items-center justify-between gap-3 rounded-lg px-4 py-3 text-base font-medium text-gray-800 transition-colors hover:bg-blue-50 hover:text-blue-600 active:bg-blue-100"
+          >
+            <span className="flex items-center gap-3">
+              <span className="text-xl text-blue-500">{item.icon}</span>
+              {item.label}
+            </span>
+            {item.type === 'link' && <IoIosArrowForward className="text-gray-400" />}
+          </Link>
+        )}
+      </motion.li>
+    ))}
 
-          <div className="lg:hidden flex justify-center mt-4">
-            <div className="flex items-center gap-4">
-               {
-                      Auth.map(({name,href,css},index)=>(
-                        <Link to={href}>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={css}>
-                        {name}
-                      </motion.button>
-                    </Link>
-                      ))
-                    }
-            </div>
-          </div>
-        </ul>
-      </motion.div>
+    <motion.div 
+      variants={{
+        open: { 
+          opacity: 1,
+          y: 0,
+          transition: { delay: 0.2 } 
+        },
+        closed: { 
+          opacity: 0,
+          y: 10,
+          transition: { duration: 0.15 }
+        }
+      }}
+      className="lg:hidden flex justify-center mt-3 pt-3 border-t border-gray-100"
+    >
+      <div className="flex items-center gap-3 w-full px-2">
+        {Auth.map(({ name, href, css }, index) => (
+          <Link 
+            to={href} 
+            key={index}
+            className="flex-1"
+          >
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className={`${css} w-full py-2.5 px-4 rounded-lg font-medium text-sm transition-colors duration-200 shadow-sm`}
+            >
+              {name}
+            </motion.button>
+          </Link>
+        ))}
+      </div>
+    </motion.div>
+  </ul>
+</motion.div>
     </header>
   );
 }
